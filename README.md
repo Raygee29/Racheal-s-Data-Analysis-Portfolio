@@ -1,3 +1,4 @@
+# Racheal-s-Data-Analysis-Portfolio
 Racheal Adelusi - Data Analyst Portfolio 📊
 A modern, responsive portfolio website showcasing my journey from Electrical Engineering to Data Analytics. This portfolio highlights my technical skills, professional experience, certifications, and projects in the data science and analytics domain.
 🌟 Live Demo
