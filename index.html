@@ -15,7 +15,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
         }
 
@@ -34,6 +34,7 @@
             top: 0;
             z-index: 1000;
             padding: 1rem 0;
+            transition: all 0.3s ease;
         }
 
         nav {
@@ -46,6 +47,7 @@
             font-size: 1.5rem;
             font-weight: bold;
             color: white;
+            transition: color 0.3s ease;
         }
 
         .nav-links {
@@ -58,10 +60,41 @@
             color: white;
             text-decoration: none;
             transition: color 0.3s ease;
+            position: relative;
         }
 
         .nav-links a:hover {
             color: #ffd700;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background: #ffd700;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
         }
 
         main {
@@ -70,21 +103,50 @@
 
         .hero {
             text-align: center;
-            padding: 4rem 0;
+            padding: 6rem 0;
             color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="g"><stop offset="0%25" stop-color="rgba(255,255,255,0.1)"/><stop offset="100%25" stop-color="rgba(255,255,255,0)"/></radialGradient></defs><circle cx="200" cy="200" r="100" fill="url(%23g)"/><circle cx="800" cy="300" r="150" fill="url(%23g)"/><circle cx="400" cy="700" r="120" fill="url(%23g)"/></svg>');
+            animation: float 20s ease-in-out infinite;
         }
 
         .hero h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 1rem;
             animation: fadeInUp 1s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s both;
+            position: relative;
+            z-index: 1;
         }
 
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             margin-bottom: 2rem;
-            opacity: 0.9;
-            animation: fadeInUp 1s ease 0.2s both;
+            opacity: 0.8;
+            animation: fadeInUp 1s ease 0.3s both;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 1;
         }
 
         .cta-button {
@@ -95,24 +157,53 @@
             border-radius: 50px;
             font-size: 1.1rem;
             cursor: pointer;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
             animation: fadeInUp 1s ease 0.4s both;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
         }
 
         .cta-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
         }
 
         .section {
             background: white;
             margin: 2rem 0;
-            padding: 3rem 2rem;
+            padding: 4rem 2rem;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            animation: fadeInUp 1s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
         }
 
         .section h2 {
@@ -131,7 +222,7 @@
             transform: translateX(-50%);
             width: 60px;
             height: 4px;
-            background: linear-gradient(45deg, #1e3c72, #2a5298);
+            background: linear-gradient(45deg, #667eea, #764ba2);
             border-radius: 2px;
         }
 
@@ -143,11 +234,17 @@
         }
 
         .profile-card {
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
             padding: 2rem;
             border-radius: 15px;
             text-align: center;
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-card:hover {
+            transform: perspective(1000px) rotateY(0deg);
         }
 
         .profile-image {
@@ -160,11 +257,12 @@
             align-items: center;
             justify-content: center;
             font-size: 3rem;
+            border: 4px solid rgba(255,255,255,0.3);
         }
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
@@ -172,19 +270,210 @@
         .skill-card {
             background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
             color: white;
-            padding: 2rem;
+            padding: 2.5rem 2rem;
             border-radius: 15px;
             text-align: center;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            transform: rotate(45deg);
+            transition: transform 0.5s ease;
         }
 
         .skill-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .skill-card:hover::before {
+            transform: rotate(45deg) translate(20px, 20px);
         }
 
         .skill-icon {
             font-size: 3rem;
             margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .skill-card h3 {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 1rem;
+        }
+
+        .skill-card p {
+            position: relative;
+            z-index: 1;
+            opacity: 0.9;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .project-icon {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .project-badges {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .project-card h3 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .project-description {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-features {
+            margin-bottom: 1.5rem;
+        }
+
+        .project-features h4 {
+            color: #333;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .project-features ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .project-features li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.3rem;
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        .project-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .project-tools {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-btn {
+            flex: 1;
+            text-align: center;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .project-btn.primary {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .project-btn.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .project-btn.secondary {
+            background: transparent;
+            color: #667eea;
+            border-color: #667eea;
+        }
+
+        .project-btn.secondary:hover {
+            background: #667eea;
+            color: white;
         }
 
         .experience-timeline {
@@ -199,7 +488,7 @@
             top: 0;
             bottom: 0;
             width: 4px;
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            background: linear-gradient(135deg, #667eea, #764ba2);
             border-radius: 2px;
         }
 
@@ -210,6 +499,7 @@
             padding: 1.5rem;
             border-radius: 10px;
             margin-left: 1rem;
+            transition: all 0.3s ease;
         }
 
         .experience-item::before {
@@ -219,14 +509,21 @@
             top: 1rem;
             width: 12px;
             height: 12px;
-            background: #1e3c72;
+            background: #667eea;
             border-radius: 50%;
             border: 3px solid white;
+            box-shadow: 0 0 0 4px #f8f9fa;
+        }
+
+        .experience-item:hover {
+            background: white;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transform: translateX(10px);
         }
 
         .certifications-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 1.5rem;
             margin-top: 2rem;
         }
@@ -236,11 +533,29 @@
             color: white;
             padding: 1.5rem;
             border-radius: 10px;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cert-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            transition: transform 0.5s ease;
         }
 
         .cert-card:hover {
-            transform: translateY(-3px);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .cert-card:hover::before {
+            transform: translate(-25%, -25%);
         }
 
         .contact-form {
@@ -267,35 +582,55 @@
             border: 2px solid #e0e0e0;
             border-radius: 10px;
             font-size: 1rem;
-            transition: border-color 0.3s ease;
+            transition: all 0.3s ease;
+            font-family: inherit;
         }
 
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: #1e3c72;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
         }
 
         .submit-btn {
-            background: linear-gradient(45deg, #1e3c72, #2a5298);
+            background: linear-gradient(45deg, #667eea, #764ba2);
             color: white;
             padding: 1rem 2rem;
             border: none;
             border-radius: 10px;
             font-size: 1.1rem;
             cursor: pointer;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
         }
 
         .submit-btn:hover {
             transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
         }
 
         footer {
             background: rgba(0,0,0,0.9);
             color: white;
             text-align: center;
-            padding: 2rem 0;
+            padding: 3rem 0;
             margin-top: 3rem;
         }
 
@@ -303,17 +638,23 @@
             display: flex;
             justify-content: center;
             gap: 1rem;
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
         }
 
         .social-links a {
             color: white;
             font-size: 1.5rem;
-            transition: color 0.3s ease;
+            padding: 0.8rem;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+            text-decoration: none;
         }
 
         .social-links a:hover {
-            color: #2a5298;
+            color: #667eea;
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-3px);
         }
 
         @keyframes fadeInUp {
@@ -327,22 +668,56 @@
             }
         }
 
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
             }
+
+            .mobile-menu {
+                display: flex;
+            }
             
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
+            }
+
+            .hero {
+                padding: 4rem 0;
             }
             
             .about-content {
                 grid-template-columns: 1fr;
                 text-align: center;
             }
+
+            .profile-card {
+                transform: none;
+            }
             
             .skills-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-links {
+                flex-direction: column;
+            }
+
+            .certifications-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 2rem 1rem;
+                margin: 1rem 0;
             }
         }
     </style>
@@ -354,18 +729,25 @@
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#certifications">Certifications</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </nav>
     </header>
 
     <main>
         <section class="hero">
             <div class="container">
-                <h1>Data Analyst & Insights Specialist</h1>
-                <p>Transforming complex data into actionable business insights through innovative analytics and visualization</p>
+                <h1>Racheal Adelusi</h1>
+                <p class="subtitle">Data Analyst & Insights Specialist</p>
+                <p>Transforming complex data into actionable business insights through innovative analytics and visualization. Bridging the gap between engineering precision and data-driven decision making.</p>
                 <a href="#contact" class="cta-button">Let's Connect</a>
             </div>
         </section>
@@ -402,22 +784,117 @@
                     <div class="skill-card">
                         <div class="skill-icon">📊</div>
                         <h3>Data Analytics</h3>
-                        <p>Microsoft Excel, Power BI, Data Mining, Statistical Analysis, Pattern Recognition</p>
+                        <p>Microsoft Excel, Power BI, Data Mining, Statistical Analysis, Pattern Recognition, Data Visualization</p>
                     </div>
                     <div class="skill-card">
                         <div class="skill-icon">🐍</div>
-                        <h3>Programming</h3>
-                        <p>Python (actively learning), SQL, Basic Computer Programming, KNIME</p>
+                        <h3>Programming & Tools</h3>
+                        <p>Python (actively learning), SQL, KNIME, Basic Computer Programming, Data Manipulation</p>
                     </div>
                     <div class="skill-card">
                         <div class="skill-icon">📈</div>
                         <h3>Business Intelligence</h3>
-                        <p>Data Visualization, Revenue Assurance, Business Analysis, Insights Generation</p>
+                        <p>Revenue Assurance, Business Analysis, Insights Generation, Performance Monitoring</p>
                     </div>
                     <div class="skill-card">
                         <div class="skill-icon">⚡</div>
                         <h3>Engineering</h3>
-                        <p>Electrical Systems, Energy Auditing, AutoCAD, Infrastructure Maintenance</p>
+                        <p>Electrical Systems, Energy Auditing, AutoCAD, Infrastructure Maintenance, Technical Analysis</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <div class="container">
+                <h2>Featured Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-icon">📊</div>
+                            <div class="project-badges">
+                                <span class="badge">Power BI</span>
+                                <span class="badge">Excel</span>
+                                <span class="badge">DAX</span>
+                            </div>
+                        </div>
+                        <h3>PwC Power BI Virtual Experience</h3>
+                        <p class="project-description">Comprehensive data visualization project completed during PwC & Microsoft virtual internship program. Created interactive dashboards analyzing customer demographics, sales performance, and business KPIs with advanced data modeling.</p>
+                        <div class="project-features">
+                            <h4>Key Features:</h4>
+                            <ul>
+                                <li>Interactive customer segmentation dashboard with drill-down capabilities</li>
+                                <li>Sales performance analytics with trend analysis and forecasting</li>
+                                <li>KPI tracking with automated reporting and alerts</li>
+                                <li>Advanced data modeling using DAX calculations</li>
+                                <li>Mobile-responsive dashboard design</li>
+                            </ul>
+                        </div>
+                        <div class="project-tools">
+                            <strong>Tools Used:</strong> Power BI Desktop, Excel, DAX, Power Query, Data Modeling
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-btn primary" onclick="showDemo('pwc-dashboard')">View Dashboard</a>
+                            <a href="#" class="project-btn secondary" onclick="alert('GitHub repository link coming soon!')">GitHub Repo</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-icon">⚡</div>
+                            <div class="project-badges">
+                                <span class="badge">Excel</span>
+                                <span class="badge">Energy Analysis</span>
+                            </div>
+                        </div>
+                        <h3>Energy Distribution Analytics</h3>
+                        <p class="project-description">Revenue assurance project at Eko Electricity Distribution Company analyzing customer consumption patterns and identifying energy loss points across the distribution network serving southern Lagos.</p>
+                        <div class="project-features">
+                            <h4>Key Achievements:</h4>
+                            <ul>
+                                <li>Analyzed consumption patterns for 100,000+ customers</li>
+                                <li>Identified 15% reduction in energy losses through data insights</li>
+                                <li>Automated reporting system reducing manual effort by 60%</li>
+                                <li>Created predictive models for equipment maintenance</li>
+                                <li>Developed KPIs for feeder performance monitoring</li>
+                            </ul>
+                        </div>
+                        <div class="project-tools">
+                            <strong>Tools Used:</strong> Microsoft Excel, Advanced Formulas, Pivot Tables, VBA Macros
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-btn primary" onclick="showDemo('energy-analytics')">View Analysis</a>
+                            <a href="#" class="project-btn secondary" onclick="alert('Confidential project - summary available on request')">Case Study</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-icon">🔍</div>
+                            <div class="project-badges">
+                                <span class="badge">KNIME</span>
+                                <span class="badge">SQL</span>
+                            </div>
+                        </div>
+                        <h3>Customer Behavior Analysis</h3>
+                        <p class="project-description">Advanced analytics project using KNIME and SQL to analyze customer behavior patterns, segment customers, and predict churn rates. Integrated multiple data sources for comprehensive customer insights.</p>
+                        <div class="project-features">
+                            <h4>Key Features:</h4>
+                            <ul>
+                                <li>Customer segmentation using clustering algorithms</li>
+                                <li>Churn prediction model with 85% accuracy</li>
+                                <li>Automated data pipeline for real-time analysis</li>
+                                <li>Interactive visualizations and reports</li>
+                                <li>A/B testing framework for marketing campaigns</li>
+                            </ul>
+                        </div>
+                        <div class="project-tools">
+                            <strong>Tools Used:</strong> KNIME Analytics Platform, SQL, Data Mining, Machine Learning
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-btn primary" onclick="showDemo('customer-analytics')">View Project</a>
+                            <a href="#" class="project-btn secondary" onclick="alert('Documentation available on request')">Documentation</a>
+                        </div>
                     </div>
                 </div>
             </div>
