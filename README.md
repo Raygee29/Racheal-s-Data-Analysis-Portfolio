@@ -1,92 +1,447 @@
-# Racheal-s-Data-Analysis-Portfolio
-Racheal Adelusi - Data Analyst Portfolio 📊
-A modern, responsive portfolio website showcasing my journey from Electrical Engineering to Data Analytics. This portfolio highlights my technical skills, professional experience, certifications, and projects in the data science and analytics domain.
-🌟 Live Demo
-View Live Portfolio (Update with actual deployment link)
-📋 Table of Contents
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power BI Data Analysis Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-About
-Features
-Technologies Used
-Sections
-Installation
-Customization
-Deployment
-Contact
-License
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
 
-🎯 About
-This portfolio website represents my professional journey as a Data Analyst with a strong foundation in Electrical and Electronics Engineering. Currently working at Eko Electricity Distribution Company, I specialize in:
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-Revenue assurance through data analytics
-Energy consumption pattern analysis
-Business intelligence and insights generation
-Data visualization and reporting
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
+            margin-bottom: 3rem;
+        }
 
-✨ Features
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
 
-Responsive Design: Fully optimized for desktop, tablet, and mobile devices
-Modern UI/UX: Clean, professional design with smooth animations
-Interactive Elements: Hover effects, smooth scrolling, and dynamic content
-Contact Form: Functional contact form for professional inquiries
-Fast Loading: Optimized for performance with minimal dependencies
-SEO Friendly: Proper meta tags and semantic HTML structure
-Cross-browser Compatible: Works seamlessly across all modern browsers
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
 
-🛠️ Technologies Used
+        .projects {
+            padding: 2rem 0;
+        }
 
-HTML5: Semantic markup and structure
-CSS3: Advanced styling with flexbox, grid, and animations
-JavaScript (ES6+): Interactive functionality and DOM manipulation
-Responsive Design: Mobile-first approach with CSS Grid and Flexbox
-Modern CSS Features:
+        .projects h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #333;
+        }
 
-CSS Variables
-Gradient backgrounds
-Transform animations
-Backdrop filters
-Grid and Flexbox layouts
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
 
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e9ecef;
+        }
 
-📄 Sections
-1. Hero Section
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
 
-Professional introduction and tagline
-Call-to-action button
-Animated typography
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            gap: 1rem;
+        }
 
-2. About Me
+        .project-header h3 {
+            font-size: 1.4rem;
+            color: #333;
+            flex: 1;
+        }
 
-Professional summary
-Contact information
-Career mission statement
-Background in engineering and data analytics
+        .project-status {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
 
-3. Technical Skills
+        .project-status.professional {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+        }
 
-Data Analytics: Microsoft Excel, Power BI, Data Mining, Statistical Analysis
-Programming: Python, SQL, KNIME
-Business Intelligence: Data Visualization, Revenue Assurance
-Engineering: Electrical Systems, Energy Auditing, AutoCAD
+        .project-status.executive {
+            background: linear-gradient(45deg, #f093fb, #f5576c);
+            color: white;
+        }
 
-4. Professional Experience
+        .project-status.capstone {
+            background: linear-gradient(45deg, #4facfe, #00f2fe);
+            color: white;
+        }
 
-Data Analyst/Energy Auditor - Eko Electricity Distribution Company (2023-Present)
-Technical Assistant - Nigerian Air Force Base (2021-2022)
-Electrical Engineer Intern - Nigerian Air Force Base (2020)
+        .project-status.live {
+            background: linear-gradient(45deg, #43e97b, #38f9d7);
+            color: white;
+        }
 
-5. Certifications & Training
+        .project-content p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
 
-Business Analysis and Data Mining (Flexolutions, 2024)
-Data Analytics with KNIME (2024)
-SQL Training Program (2024)
-Revenue Protection Boot-camp (USAID, 2024)
-Multiple HSE Certifications (2021)
+        .project-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
 
-6. Contact Form
+        .stat {
+            text-align: center;
+        }
 
-Professional inquiry form
-Direct email and phone contact
-Social media links
+        .stat-number {
+            display: block;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #667eea;
+        }
 
+        .stat-label {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .project-highlights {
+            margin: 1.5rem 0;
+        }
+
+        .project-highlights h4 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .project-highlights ul {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.6;
+            padding-left: 1.2rem;
+        }
+
+        .project-highlights li {
+            margin-bottom: 0.3rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .tag {
+            background: #e9ecef;
+            color: #495057;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .github-portfolio-link {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2.5rem;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 20px;
+            color: white;
+        }
+
+        .github-portfolio-link h3 {
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .github-portfolio-link p {
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #f5576c;
+        }
+
+        .btn-primary:hover {
+            background: #f8f9fa;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .project-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .project-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>Data Analysis Portfolio</h1>
+            <p>Showcasing expertise in Power BI, business intelligence, and strategic data insights through comprehensive analytics projects</p>
+        </div>
+    </div>
+
+    <!-- Power BI Projects Section -->
+    <section class="projects">
+        <div class="container">
+            <h2>Power BI Projects Portfolio</h2>
+            <p class="section-subtitle">Showcasing expertise in data visualization and business intelligence through real-world Power BI projects</p>
+            
+            <div class="projects-grid">
+                <!-- Project 1: Executive Sales Report -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Executive Sales Performance Dashboard</h3>
+                        <span class="project-status executive">Executive</span>
+                    </div>
+                    <div class="project-content">
+                        <p>Comprehensive executive-level sales dashboard tracking key performance indicators with 46.9% YoY revenue growth. Features detailed customer analysis, product performance metrics, and geographic revenue distribution.</p>
+                        
+                        <div class="project-stats">
+                            <div class="stat">
+                                <span class="stat-number">$2.3M</span>
+                                <span class="stat-label">Revenue</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">10K</span>
+                                <span class="stat-label">Customers</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">46.9%</span>
+                                <span class="stat-label">YoY Growth</span>
+                            </div>
+                        </div>
+                        
+                        <div class="project-highlights">
+                            <h4>Key Features:</h4>
+                            <ul>
+                                <li>Executive KPI dashboard with YoY comparisons (46.9% revenue growth)</li>
+                                <li>Category performance analysis (Technology, Furniture, Office Supplies)</li>
+                                <li>Geographic revenue distribution across major US cities</li>
+                                <li>Monthly trend analysis with seasonal pattern identification</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="project-tags">
+                            <span class="tag">Power BI</span>
+                            <span class="tag">Executive Reporting</span>
+                            <span class="tag">KPI Tracking</span>
+                            <span class="tag">Geographic Analysis</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Global Sales Analytics -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Global Sales Analytics with Strategic Insights</h3>
+                        <span class="project-status capstone">Capstone</span>
+                    </div>
+                    <div class="project-content">
+                        <p>Advanced multi-dimensional business intelligence dashboard with comprehensive findings and strategic recommendations. Features global market analysis, customer segmentation, and detailed performance insights.</p>
+                        
+                        <div class="project-stats">
+                            <div class="stat">
+                                <span class="stat-number">$59.84M</span>
+                                <span class="stat-label">Revenue</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">9</span>
+                                <span class="stat-label">Countries</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">58.56%</span>
+                                <span class="stat-label">Profit Margin</span>
+                            </div>
+                        </div>
+                        
+                        <div class="project-highlights">
+                            <h4>Strategic Insights:</h4>
+                            <ul>
+                                <li>Identified critical channel imbalance: 79.6% in-store vs 20.32% online</li>
+                                <li>Strategic recommendations for international market expansion</li>
+                                <li>Customer lifecycle optimization with $3.92K average CLV analysis</li>
+                                <li>Comprehensive findings report with actionable business recommendations</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="project-tags">
+                            <span class="tag">Power BI</span>
+                            <span class="tag">Strategic Analytics</span>
+                            <span class="tag">Global Markets</span>
+                            <span class="tag">Business Intelligence</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Regional Electricity Consumption Analysis -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Regional Electricity Consumption Analysis - United States</h3>
+                        <span class="project-status capstone">Capstone</span>
+                    </div>
+                    <div class="project-content">
+                        <p>Comprehensive analysis of hourly electricity load data across 12 US regions (including PJME, AEP, COMED, DOM) to optimize power generation and distribution planning. Features time-based demand patterns, regional comparisons, and strategic forecasting recommendations.</p>
+                        
+                        <div class="project-stats">
+                            <div class="stat">
+                                <span class="stat-number">798M</span>
+                                <span class="stat-label">Total Load (MW)</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">55K</span>
+                                <span class="stat-label">Peak Load</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">16.57%</span>
+                                <span class="stat-label">Load Factor</span>
+                            </div>
+                        </div>
+                        
+                        <div class="project-highlights">
+                            <h4>Key Analytical Insights:</h4>
+                            <ul>
+                                <li>Identified regional load imbalances with PJME contributing 34.59% of total demand</li>
+                                <li>Discovered hourly and seasonal demand patterns for accurate forecasting</li>
+                                <li>Analyzed load factor efficiency revealing system underutilization during off-peak hours</li>
+                                <li>Provided strategic recommendations for dynamic pricing and smart grid infrastructure</li>
+                                <li>Created real-time monitoring dashboards for anomaly detection and cost optimization</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="project-tags">
+                            <span class="tag">Power BI</span>
+                            <span class="tag">Time-Series Analysis</span>
+                            <span class="tag">Energy Optimization</span>
+                            <span class="tag">Forecasting</span>
+                            <span class="tag">Regional Analytics</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: Energy Distribution Analytics -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Energy Distribution Analytics</h3>
+                        <span class="project-status live">Live</span>
+                    </div>
+                    <div class="project-content">
+                        <p>Revenue assurance project at Eko Electricity Distribution Company analyzing customer consumption patterns and identifying energy loss points across the distribution network serving southern Lagos.</p>
+                        
+                        <div class="project-highlights">
+                            <h4>Key Achievements:</h4>
+                            <ul>
+                                <li>Analyzed consumption patterns for 100,000+ customers</li>
+                                <li>Identified 15% reduction in energy losses through data insights</li>
+                                <li>Automated reporting system reducing manual effort by 60%</li>
+                                <li>Created predictive models for equipment maintenance</li>
+                                <li>Developed KPIs for feeder performance monitoring</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="project-tags">
+                            <span class="tag">Excel</span>
+                            <span class="tag">Revenue Assurance</span>
+                            <span class="tag">Energy Analytics</span>
+                            <span class="tag">Predictive Modeling</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="github-portfolio-link">
+                <h3>🚀 Complete Power BI Portfolio on GitHub</h3>
+                <p>Explore detailed documentation, DAX formulas, data models, and interactive demos for all my Power BI projects including sample datasets and setup guides.</p>
+                <a href="#" class="btn btn-primary">View Full Portfolio Repository</a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
